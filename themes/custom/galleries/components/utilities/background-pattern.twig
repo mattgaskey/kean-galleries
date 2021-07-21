@@ -1,0 +1,49 @@
+<div class="
+  relative z-10 overflow-hidden
+  {% if variant == 'red' or variant == 'red-alt' %}{# 'red-alt' and 'red' are identical in this template #}
+    bg-red text-white {{ pattern == 'confetti-light' or pattern == 'lines-light' ? 'before:opacity-10' : 'before:opacity-20' }}
+  {% elseif variant == 'violet' %}
+    bg-blue text-white {{ pattern == 'confetti-light' or pattern == 'lines-light' ? 'before:opacity-10' : 'before:opacity-25' }}
+  {% elseif variant == 'yellow' %}
+    bg-yellow before:opacity-40
+  {% elseif variant == 'light' %}{# use only with `confetti-light` and `lines-light` #}
+    bg-cream
+  {% endif %}
+  before:content-empty before:absolute before:inset-0 before:-z-10
+  {% if pattern == 'confetti' %}
+    before:bg-confetti
+  {% elseif pattern == 'topo' %}
+    before:bg-topo before:transform before:scale-150
+  {% elseif pattern == 'lines' %}
+    before:bg-lines
+  {% elseif pattern == 'confetti-light' %}
+    before:bg-confetti-light
+  {% elseif pattern == 'lines-light' %}
+    before:bg-lines-light
+  {% endif %}
+">
+  {% if underlay_1 %} {# dark 45-degree overlay on right for page-headers; don't use with `light` variant #}
+    <div class="hidden lg:block absolute inset-0 -z-10">
+      <div class="absolute top-0 right-0 w-1000vh h-1000vh clip-path-triangle-bottom-right mr-72 bg-black opacity-25"></div>
+      <div class="absolute top-0 bottom-0 right-0 w-72 bg-black opacity-25"></div>
+      {% if underlay_2 %} {# white 45-degree overlay that covers most of dark 45-degree overlay #}
+        <div class="absolute top-0 right-0 w-1000vh h-1000vh clip-path-triangle-bottom-right bg-white"></div>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% block component %}{{ component }}{% endblock %}
+</div>
+
+{#
+  Use with `embed` and `block` like this:
+
+  {% embed '../utilities/background-pattern.twig' with {
+    variant: 'red'/'violet'/'light'
+    pattern: 'confetti'/'topo'/'lines'/'lines-light'/'confetti-light'
+    underlay_1: true
+  } %}
+    {% block component %}
+      <!-- markup for component goes here -->
+    {% endblock %}
+  {% endembed %}
+#}

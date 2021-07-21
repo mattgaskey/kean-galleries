@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Theme override for a filter caption.
+ *
+ * Returns HTML for a captioned image, audio, video or other tag.
+ *
+ * Available variables
+ * - string node: The complete HTML tag whose contents are being captioned.
+ * - string tag: The name of the HTML tag whose contents are being captioned.
+ * - string caption: The caption text.
+ * - string classes: The classes of the captioned HTML tag.
+ */
+#}
+{% set float_classes = classes == 'align-left' ? 'wysiwyg-float-left' : 
+                       classes == 'align-right' ? 'wysiwyg-float-right' : classes %} 
+<figure role="group"{%- if float_classes %} class="{{ float_classes }} mx-2"{%- endif %}>
+{{ node }}
+{% if caption or logged_in %} {# force the caption visible in the wysiwyg #}
+<figcaption class="font-sans text-xs pt-2">{{ caption }}</figcaption>
+{% endif %}
+</figure>

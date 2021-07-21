@@ -1,0 +1,7 @@
+{% extends 'page.html.twig' %}
+{% block content %}
+<div class="container vertical-space">
+  {% include "@storybook/h/h.twig" with { level: 1, headline: 'Search Results' } %}
+  {{ page.content }}
+</div>
+{% endblock %}

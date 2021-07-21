@@ -1,0 +1,40 @@
+body {
+  @apply overflow-x-hidden text-black font-sans;
+}
+
+a {
+  @apply transition-colors;
+  transition-duration: 350ms;
+}
+
+/* visible :focus outlines (have to override some `normalize.css` rules here) */
+*:focus,
+button:focus,
+button:-moz-focusring,
+*:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 5px auto Highlight !important; /* for Firefox */
+  outline: 5px auto -webkit-focus-ring-color !important;
+}
+
+.user-login-form {
+  @apply container space-y-6 my-10;
+}
+
+.user-login-form .description {
+  @apply mt-2 text-sm;
+}
+
+.user-login-form .form-item label {
+  @apply font-bold;
+}
+
+.user-login-form .form-item input {
+  @apply ml-2 py-3 px-4 h-12 border-2 border-gray text-sm font-bold;
+}
+
+.user-login-form .form-submit {
+  @apply px-6 py-2.5 mr-4 mb-2 text-sm font-bold bg-blue text-white cursor-pointer transition-colors;
+}

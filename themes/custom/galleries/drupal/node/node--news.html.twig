@@ -1,0 +1,27 @@
+{% set catch_cache = content|render %}
+{% set page_title = content.field_title_override|children ? content.field_title_override|children : label|children|first %}
+{% set date = content.field_date_range|children|first.start_date ? content.field_date_range|children|first.start_date['#text']|date('F j, Y') ~ ' - ' ~ content.field_date_range|children|first.end_date['#text']|date('F j, Y') : content.field_date_range|children|first['#text']|date('F j, Y') %}
+{% extends "node.html.twig" %}
+{% block content %}
+  <div class="container mb-20">
+    <header>
+      <div class="container">
+        {% include '@storybook/h/h.twig' with { level: '1', headline: page_title } only %}
+        <div class="prose prose-lg max-w-none mt-6">{{ date }}{% if content.field_event_time|children %} | {{ content.field_event_time|children }}{% endif %}</div>
+      </div>
+    </header>
+    {% if content.field_banner_media|children %}
+    <div class="vertical-space">
+      {% include "@storybook/media/figure.twig" with {  
+        media: content.field_banner_media,
+        figure_classes: 'mx-auto my-6'
+      } %}
+    </div>
+    {% endif %}
+    <div class="lg:flex lg:items-center lg:justify-center">
+      {{ content.body }}
+    </div>
+  </div>
+  
+{% endblock %}
+

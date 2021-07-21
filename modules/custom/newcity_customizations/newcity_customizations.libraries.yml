@@ -1,0 +1,29 @@
+views:
+  version: VERSION
+  css:
+    theme:
+      css/views.css: {}
+
+edit-form:
+  version: VERSION
+  css:
+    theme:
+      css/paragraphs.css: {}
+  js:
+    js/sidebar.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+summary-only:
+  version: VERSION
+  css:
+    theme:
+      css/summary-only.css: {}
+
+article-length-autoselect:
+  version: VERSION
+  js:
+    js/article-length-autoselect.js: {}
+  dependencies:
+    - core/jquery;

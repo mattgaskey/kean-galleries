@@ -1,0 +1,69 @@
+full_width:
+  label: 'Full width column'
+  template: drupal/layouts/full-width
+  default_region: main
+  regions:
+    main:
+      label: Main
+  icon_map:
+    - [main]
+  classes:
+    background:
+      label: 'Background'
+      multiple: false
+      required: false
+      options:
+        'bg-gray-100': 'Light gray'
+        'wordmark': 'Wordmark'
+      description: 'Select the background style for this region.'
+sidebar:
+  label: 'Left sidebar'
+  category: 'Custom'
+  template: drupal/layouts/left-sidebar
+  default_region: main
+  regions:
+    main:
+      label: Main
+    aside:
+      label: Sidebar
+  icon_map:
+    - [aside, main, main]
+  classes:
+    background:
+      label: 'Background'
+      multiple: false
+      required: false
+      options:
+        'bg-gray-100': 'Light gray'
+        'sidebar-gradient': 'Sidebar gradient'
+      description: 'Select the background style for this region.'
+right_sidebar:
+  label: 'Right sidebar'
+  category: 'Custom'
+  template: drupal/layouts/right-sidebar
+  default_region: main
+  regions:
+    main:
+      label: Main
+    aside:
+      label: Sidebar
+  icon_map:
+    - [main, main, aside]
+  classes:
+    background:
+      label: 'Background'
+      multiple: false
+      required: false
+      options:
+        'bg-gray-100': 'Light gray'
+      description: 'Select the background style for this region.'
+page_header:
+  label: 'Page header'
+  category: 'Custom'
+  template: drupal/layouts/page-header
+  default_region: main
+  regions:
+    main:
+      label: Header
+  icon_map:
+    - [main]

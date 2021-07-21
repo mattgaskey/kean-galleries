@@ -1,0 +1,58 @@
+{% block header %}
+  {{ header }}
+{% endblock %}
+
+<main class="page template">
+
+{# if there is no sidebar, just override entire `content` block #}
+{% block content %}
+
+  {# if there IS sidebar, override `full_width_prefix`, `main`, `sidebar`, and `full_width_suffix` blocks as needed #}
+
+  {# full-width area before main/sidebar (page-header, breadcrumbs...) #}
+  {% block full_width_prefix %}
+  {% endblock %}
+
+
+  {% set main_block %}
+    <div class="container lg:no-container no-container-query">
+      {% block main %}{% endblock %}
+    </div>
+  {% endset %}
+
+  {% set main %}
+    <div class="with-sidebar__main lg:w-main {{ sidebar_left ? 'lg:pl-16' : 'lg:pr-16' }}">
+      {% include '../utilities/container-query.twig' with { component: main_block } only %}
+    </div>
+  {% endset %}
+
+  {% set sidebar %}
+    <div class="with-sidebar__sidebar container lg:no-container lg:w-sidebar">
+      {% block sidebar %}
+      {% endblock %}
+    </div>
+  {% endset %}
+
+  <div class="lg:container space-y-10 lg:flex lg:space-y-0 my-10 lg:my-20">
+    {% if sidebar_left %}
+      {{ sidebar }}
+      {{ main }}
+    {% else %}
+      {{ main }}
+      {{ sidebar }}
+    {% endif %}
+  </div>
+
+
+  {# full-width area after main/sidebar #}
+  {% block full_width_suffix %}
+  {% endblock %}
+
+{% endblock %}
+
+</main>
+
+{# if what's above is white, there's margin between -- TODO: figure out how/where to implement that #}
+{% block footer %}
+  {{ footer }}
+{% endblock %}

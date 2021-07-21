@@ -1,0 +1,23 @@
+{#
+/**
+ * Default theme implementation for Views to output a Teaser Collection.
+ *
+ * Available variables:
+ * - rows
+ * - options: View plugin style options:
+ *   - fancy: Fancy variant
+ *
+ * @see template_preprocess_views_view_teaser_collection()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'views-view-teaser-collection',
+    options.fancy ? 'fancy',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ rows }}
+</div>

@@ -1,0 +1,33 @@
+{% extends './page.twig' %}
+
+{% block header %}
+  <div class="bg-gray-light border-b-1">
+    <div class="container h-60">SITE HEADER</div>
+  </div>
+{% endblock %}
+
+{% block full_width_prefix %}
+  <div class="bg-gray-light border-b-1">
+    <div class="container h-60">OPTIONAL FULL-WIDTH PREFIX (maybe for page-header or breadcrumbs, for example)</div>
+  </div>
+{% endblock %}
+
+{% block main %}
+  <div class="h-60 border-1">MAIN AREA AGAINST SIDEBAR</div>
+{% endblock %}
+
+{% block sidebar %}
+  <div class="h-60 border-1 mt-4 lg:mt-0">SIDEBAR</div>
+{% endblock %}
+
+{% block full_width_suffix %}
+  <div class="bg-gray-light border-t-1 mt-6">
+    <div class="container h-60">OPTIONAL FULL-WIDTH SUFFIX (for full-width components after the sidebar)</div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  <div class="bg-gray-light border-t-1">
+    <div class="container h-60">SITE FOOTER</div>
+  </div>
+{% endblock %}

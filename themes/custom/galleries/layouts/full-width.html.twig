@@ -1,0 +1,26 @@
+    {#
+    /**
+     * @file
+     * Default theme implementation to display a one-column layout.
+     *
+     * Available variables:
+     * - content: The content for this layout.
+     * - attributes: HTML attributes for the layout <div>.
+     *
+     * @ingroup themeable
+     */
+    #}
+    {%
+      set classes = [
+        'layout',
+        'layout--onecol',
+        ('bg-gray-100' in attributes.class) ? 'pb-20 lg:pb-40',
+      ]
+    %}
+    {% if content %}
+      <div{{ attributes.addClass(classes) }}{% if 'wordmark' in attributes.class %} style="background-image: url('{{ static_assets ~ 'twi-mark.svg' }}');"{% endif %}>
+        <div {{ region_attributes.content.addClass('layout__region', 'layout__region--content') }}>
+          {{ content.main }}
+        </div>
+      </div>
+    {% endif %}

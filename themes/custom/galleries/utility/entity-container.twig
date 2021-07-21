@@ -1,0 +1,9 @@
+{# utiltity container to take care of caching and contextual links for things like teasers #}
+{% set cache_catch = content|render %}
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+  {% endblock %}
+</div>

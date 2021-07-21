@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_instagram</title>
+    <g id="home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-2,-approved" transform="translate(-1215.000000, -5686.000000)" fill="#101820">
+            <g id="footer" transform="translate(0.000000, 5586.000000)">
+                <g id="social" transform="translate(1138.000000, 100.000000)">
+                    <path d="M79.5,0 L78.25,0 C77.55875,0 77,0.55875 77,1.25 L77,2.5 L77,10 L77,17.5 L77,18.75 C77,19.44125 77.55875,20 78.25,20 L79.5,20 L94.5,20 L95.75,20 C96.44125,20 97,19.44125 97,18.75 L97,17.5 L97,10 L97,2.5 L97,1.25 C97,0.55875 96.44125,0 95.75,0 L94.5,0 L79.5,0 Z M87,7.5 C88.38,7.5 89.5,8.62125 89.5,10 C89.5,11.37875 88.38,12.5 87,12.5 C85.62,12.5 84.5,11.37875 84.5,10 C84.5,8.62125 85.62,7.5 87,7.5 Z M94.5,17.5 L79.5,17.5 L79.5,10 L82,10 C82,12.7575 84.24375,15 87,15 C89.75625,15 92,12.7575 92,10 L94.5,10 L94.5,17.5 Z M94.5,6.25 L90.75,6.25 L90.75,2.5 L94.5,2.5 L94.5,6.25 Z" id="icon_instagram"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

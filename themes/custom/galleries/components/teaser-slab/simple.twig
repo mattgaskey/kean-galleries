@@ -1,0 +1,21 @@
+{% set teasers %}
+  {% set tag = headline ? 'section' : 'div' %}
+  <{{ tag }}>
+    <div class="container {{ container_classes }}">
+      <div class="flex flex-col space-y-6 sm:space-y-7">
+        {% if headline %}
+          {% include '../h/h.twig' with { level: '2', headline: headline } only %}
+        {% endif %}
+
+        {% if intro %}
+          <p class="text-xl">{{ intro }}</p>
+        {% endif %}
+        
+        {{ simple_teaser_collection }}
+
+        {% if link_list %}{{ link_list }}{% endif %}
+      </div>
+    </div>
+  </{{ tag }}>
+{% endset %}
+{{ teasers }}

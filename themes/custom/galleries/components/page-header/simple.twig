@@ -1,0 +1,11 @@
+<header class="space-y-4 mb-4">
+  {% include '../h/h.twig' with { level: '1', headline: headline } only %}
+  {% if date or location %}
+    <div class="flex flex-col sm:flex-row text-lg font-medium">
+      <span>{{ date }}</span>
+      {% if location %}
+        {{ location }}
+      {% endif %}
+    </div>
+  {% endif %}
+</header>

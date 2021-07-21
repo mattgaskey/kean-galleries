@@ -1,0 +1,10 @@
+{% set size_classes = large ? 'text-2xl sm:text-3xl pl-10 before:w-6 before:h-6 before:top-7-px' :
+                      small ? 'pl-6 before:top-3-px before:w-3 before:h-3' : 
+                              'text-xl sm:text-2xl pl-8 before:w-5 before:h-5 before:top-5-px' %}
+<a href="{{ link.url }}" class="
+  fancy-link relative {{ extra_classes }}
+  before:content-empty before:mask-arrow-fancy before:transition-colors before:bg-black
+  before:absolute before:left-0
+  {{ size_classes }}
+  hover:before:left-2 before:transition-inset before:transform motion-reduce:before:transition-none motion-reduce:before:transform-none
+">{{ link.title }}</a>

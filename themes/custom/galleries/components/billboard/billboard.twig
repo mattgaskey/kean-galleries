@@ -1,0 +1,26 @@
+<div class="p-10 lg:p-20 {{ background ? 'bg-cream' }}">
+  {% set tag = headline ? 'section' : 'div' %}
+  <{{ tag }} class="flex flex-col md:flex-row justify-between">
+    <div class="flex flex-2/3 flex-col space-y-6">
+      {% if headline %}
+        {% include '../h/h.twig' with { level: '2', headline: headline } only %}
+      {% endif %}
+
+      {% if wysiwyg %}
+        <div class="prose prose-lg">{{ wysiwyg }}</div>
+      {% endif %}
+    </div>
+    <div class="flex flex-1/3 flex-col space-y-6 mt-10 md:mt-0 md:pl-5 lg:pl-10">
+      {% if links %}
+        {% if '#theme' in links|keys %}
+          {{ links }}
+        {% else %}
+          {% include '../link-list/button.twig' with {
+            links: links,
+            variant: 'block'
+          } only %}
+        {% endif %}
+      {% endif %}
+    </div>
+  </{{ tag }}>
+</div>

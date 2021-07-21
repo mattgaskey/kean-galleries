@@ -1,0 +1,100 @@
+<?php
+
+/**
+ * @file
+ * Contains newcity_customizations.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\Core\Messenger\MessengerInterface;
+
+/**
+ * Implements hook_help().
+ */
+function newcity_customizations_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the newcity_customizations module.
+    case 'help.page.newcity_customizations':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Admin customizations, plugins, and extensions') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_toolbar_alter().
+ */
+function newcity_customizations_toolbar_alter(&$items) {
+  // Change the name on the contextual edit button.
+  if (isset($items['contextual'])) {
+    $items['contextual']['tab']['#value'] = t('Toggle in-page edit options');
+  }
+}
+
+/**
+ * Implements hook_path_update().
+ */
+function newcity_customizations_path_update($path) {
+  // If a node, run through children and update them.
+  if (strpos($path['source'], '/node/') === 0) {
+    $node_storage = \Drupal::service('entity_type.manager')->getStorage('node');
+    list($route, $nid) = explode('/', trim($path['source'], '/'));
+    $node = $node_storage->load($nid);
+
+    // Find / update all nodes with this one as the parent / grandparent.
+    $nids = [];
+
+    $menu_tree = \Drupal::service('menu.link_tree');
+    $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
+
+    if ($links = $menu_link_manager->loadLinksByRoute('entity.node.canonical', ['node' => $node->id()])) {
+      $link = reset($links);
+      $menu_name = $link->getMenuName();
+      $parameters = new MenuTreeParameters();
+
+      $parameters->setRoot($link->getPluginId());
+      $parameters->excludeRoot();
+      $parameters->setMaxDepth(2);
+      $tree = $menu_tree->load($menu_name, $parameters);
+
+      foreach ($tree as $leaf) {
+        if ($leaf->link->getUrlObject()->getRouteName() == "entity.node.canonical") {
+          // Great. We can stop.
+          $nids[] = $leaf->link->getUrlObject()->getRouteParameters()['node'];
+        }
+        else {
+          // Drop down the subtree.
+          // This is recursive, but we're only going down one level.
+          if ($subtree = $leaf->subtree) {
+            foreach ($subtree as $subleaf) {
+              if ($subleaf->link->getUrlObject()->getRouteName() == "entity.node.canonical") {
+                $nids[] = $subleaf->link->getUrlObject()->getRouteParameters()['node'];
+              }
+            }
+          }
+        }
+      }
+
+      if ($nids) {
+        // Resave.
+        foreach ($nids as $nid) {
+          $n = $node_storage->load($nid);
+          $n->save();
+        }
+
+        addMessage(t('Also updated menu child nodes') . ': ' . implode(', ', $nids));
+      }
+    }
+  }
+}
+
+require_once 'lib/edit-forms.inc';
+require_once 'lib/html.inc';
+require_once 'lib/views.inc';
+require_once 'lib/metatag.inc';
+require_once 'lib/sitemap.inc';
+require_once 'lib/breadcrumbs.inc';

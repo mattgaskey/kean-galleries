@@ -1,0 +1,16 @@
+{% set page_title = content.field_title_override|children ? content.field_title_override|children : label|children|first %}
+{% set link = {
+  url: url,
+  title: page_title
+ } %}
+{% set date = content.field_date|children|first.start_date['#attributes'].datetime|date('F j, Y') ~ ' - ' ~ content.field_date|children|first.end_date['#attributes'].datetime|date('F j, Y') %}
+{% set summary = content.field_summary|children ? content.field_summary : content.field_about %}
+{% include '@storybook/teaser/list-teaser.twig' with {
+  url: link.url,
+  link: link,
+  date: date,
+  intro: summary,
+  location: content.field_location,
+  picture: content.field_banner_media
+} %}
+

@@ -1,0 +1,11 @@
+{% set page_title = content.field_title_override|children ? content.field_title_override|children : label|children|first %}
+{% set link = {
+  url: url,
+  title: page_title
+} %}
+{% set summary = content.field_summary|children ? content.field_summary : content.field_about %}
+{% include "@storybook/teaser/simple.twig" with {
+  link: link,
+  picture: content.field_banner_media,
+  intro: summary
+} %}

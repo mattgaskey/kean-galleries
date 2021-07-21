@@ -1,0 +1,8 @@
+{{ attach_library('galleries/alert') }}
+{% include "@storybook/alert/alert.twig" with {
+  site_wide: true,
+  closeable: true,
+  alert_id: 'alert',
+  headline: title,
+  wysiwyg: message
+} %}

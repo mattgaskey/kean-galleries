@@ -1,0 +1,20 @@
+{#
+/**
+ * Default theme implementation for Views to output a Stacked Teaser Collection.
+ *
+ * Available variables:
+ * - rows
+ *
+ * @see template_preprocess_views_view_stacked_teaser_collection()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'views-view-stacked-teaser-collection',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ rows }}
+</div>

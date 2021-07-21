@@ -1,0 +1,41 @@
+.feature.feature--fancy .button-link {
+  background-color: #FFCC3F !important;
+  color: #101820 !important;
+  border: 2px solid #FFCC3F !important;
+}
+
+.feature.feature--fancy .button-link:hover {
+  background-color: transparent !important;
+  color: #FFCC3F !important;
+}
+
+@screen lg {
+  .feature {
+    @apply my-20;
+  }
+
+  .feature:not(.flipped):before {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    left: 0;
+  }
+
+  .feature.flipped:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    right: 0;
+  }
+
+}

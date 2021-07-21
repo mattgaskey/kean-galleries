@@ -1,0 +1,80 @@
+<?php
+
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Language\LanguageInterface;
+
+/**
+ * Implements hook_library_info_build().
+ */
+function galleries_library_info_build() {
+  $extensions = implode('|', ['css', 'js']);
+  $path_base = __DIR__ . '/';
+  $directory = $path_base . 'css/components';
+  $file_scan = \Drupal::service('file_system')->scanDirectory($directory, "/{$extensions}$/");
+  $libraries = [];
+  foreach ($file_scan as $file) {
+    $parts = explode('.', $file->filename);
+    $extension = end($parts);
+    // Make the URI relative to the theme root.
+    $uri = str_replace($path_base, '', $file->uri);
+    switch ($extension) {
+      case 'css':
+        $libraries[$file->name][$extension] = [
+          'component' => [
+            $uri => [],
+          ],
+        ];
+        break;
+
+      case 'js':
+        $libraries[$file->name][$extension] = [
+          $uri => [],
+        ];
+        break;
+    }
+  }
+  return $libraries;
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function galleries_preprocess(&$variables) {
+  $variables['base_url'] = base_path();
+  // Set a path helper for theme assets.
+  $variables['static_assets'] = $variables['base_url'] . $variables['directory'] . '/static/';
+
+  // Theme settings.
+  $theme_settings = \Drupal::config('galleries.settings');
+  // Add cachability metadata.
+  CacheableMetadata::createFromRenderArray($variables)
+    ->addCacheableDependency($theme_settings)
+    ->applyTo($variables);
+  // Add theme setting variables to the twig template variables.
+  $variables['theme_settings'] = $theme_settings->getOriginal();
+
+  // Set a variable based on the path.matcher.
+  if (!isset($variables['is_front'])) {
+    try {
+      $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+    }
+    catch (\Exception $e) {
+      $variables['is_front'] = FALSE;
+    }
+  }
+
+  // Ensure the cache varies correctly.
+  $variables['#cache']['contexts'][] = 'url.path.is_front';
+}
+
+require_once 'lib/html.inc';
+require_once 'lib/page.inc';
+require_once 'lib/node.inc';
+require_once 'lib/menu.inc';
+require_once 'lib/term.inc';
+require_once 'lib/block.inc';
+require_once 'lib/view.inc';
+require_once 'lib/field.inc';
+require_once 'lib/settings.inc';
+require_once 'lib/embeds.inc';
+require_once 'lib/paragraph.inc';

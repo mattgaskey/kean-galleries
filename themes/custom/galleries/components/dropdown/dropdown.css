@@ -1,0 +1,33 @@
+@media screen and (max-width: 1280px) {
+  .dropdown-nav {
+    z-index: 99999;
+  }
+  .dropdown-nav__target {
+    max-height: 0;
+    opacity: 0;
+    transition: all .5s ease;
+    overflow: hidden;
+    display: none;
+  }
+  
+  .dropdown-nav__target--open {
+    display: inherit;
+    opacity: 1;
+    max-height: 300px;
+    transition: all .5s ease;
+  }
+
+  .dropdown-nav__trigger {
+    width: 43px;
+    height: 44px;
+  }
+  
+  .dropdown-nav__trigger > svg,
+  .dropdown-nav__trigger--rotated > svg {
+    transition: transform .5s ease;
+  }
+  
+  .dropdown-nav__trigger--rotated > svg {
+    transform: rotate(90deg);
+  }
+}

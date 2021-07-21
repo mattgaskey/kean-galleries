@@ -1,0 +1,17 @@
+<div class="container">
+  {% if headline %}{% include "../h/h.twig" with { level: 2, headline: headline, extra_classes: 'mb-7' } only %}{% endif %}
+  <div class="masonry {{ in_sidebar ? 'column-count-2' : 'column-count-3' }} fancybox">
+    {% for item in gallery %}
+      <figure class="item">
+        <a data-fancybox="media" href="{{ item.src }}" data-width="{{ item.width }}" data-height="{{ item.height }}" data-caption="{{ item.info ~ item.description }}">
+          {% include "../media/image.twig" with { src: item.src } %}
+        </a>
+        {% if item.caption %}
+        <figcaption>
+          <div class="text-base text-gray mt-3">{{ item.caption }}</div>
+        </figcaption>
+      {% endif %}
+      </figure>
+    {% endfor %}
+  </div>
+</div>

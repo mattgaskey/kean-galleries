@@ -1,0 +1,8 @@
+{% set headline = content.field_headline|children|default('In the Press') %}
+{% embed "@storybook/quote-list/quote-list.twig" with {
+  headline: headline
+} %}
+  {% block quotes %}
+    {{ content.field_quotes }}
+  {% endblock %}
+{% endembed %}

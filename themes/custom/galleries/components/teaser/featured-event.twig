@@ -1,0 +1,24 @@
+<div class="container relative z-0">
+  <div class="featured-event pl-10 py-10 bg-cream 
+  before:content-empty before:block 
+  before:bg-white 
+  before:absolute before:z-1 before:right-0 before:top-0 before:h-full">
+    <div class="flex flex-col lg:flex-row relative z-10">
+      <div class="lg:flex-3/5 flex flex-col space-y-4 pr-10">
+        {% if date %}
+          <div class="text-gray-dark text-sm">{% spaceless %}      
+            <span>{{ date }}</span>
+            {% if time %}
+              <span class="before:content-pipe before:mx-2.5 before:text-base">{{ time }}</span>
+            {% endif %}
+          {% endspaceless %}</div>
+        {% endif %}
+        <div>
+          {% include '../fancy-link/fancy-link.twig' with { link: link, large: true } only %}
+        </div>
+        <p class="prose prose-lg">{{ intro }}</p>
+      </div>
+      <div class="pr-10 lg:pr-0 lg:flex-2/5">{{ picture }}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+gcse.settings:
+  path: '/admin/config/search/gcse'
+  defaults:
+    _form: '\Drupal\gcse\Form\SettingsForm'
+    _title: 'Site Search Settings'
+  requirements:
+    _permission: 'administer gcse'

@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Right sidebar layout.
+ *
+ * Available variables:
+ * - main: Main content for this layout.
+ * - attributes: HTML attributes for the layout <div>.
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'layout',
+    'layout--page-header',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+{{ content.main}}
+</div>

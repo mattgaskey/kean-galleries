@@ -1,0 +1,14 @@
+{% if view_mode == 'teaser' %}
+{% include "@storybook/teaser/simple.twig" with {
+  link: {
+    url: content.field_url|children,
+    title: name|children
+  },
+  picture: content.field_media,
+  intro: content.field_building
+} %}
+{% elseif view_mode == 'link' %}
+  <span class="inline-block sm:pl-3 sm:before:content-empty sm:before:content-pipe sm:before:text-gray sm:before:pr-3 prose prose-lg text-lg font-medium"><a href="{{ content.field_url|children }}">{{ name|children }}</a></span>
+{% else %}
+  {{ elements }}
+{% endif %}

@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Contains admin_theme_tweaks.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function admin_theme_tweaks_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the admin_theme_tweaks module.
+    case 'help.page.admin_theme_tweaks':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Styling tweaks for admin theme') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function admin_theme_tweaks_page_attachments(array &$attachments) {
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+  if ($theme == 'claro') {
+      $attachments['#attached']['library'][] = 'admin_theme_tweaks/admin-styling';
+  }
+ }

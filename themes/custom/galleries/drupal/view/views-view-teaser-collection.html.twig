@@ -1,0 +1,40 @@
+{#
+/**
+ * Default theme implementation for Views to output a Teaser Collection.
+ *
+ * Available variables:
+ * - rows: the View result
+ * - options: View plugin style options:
+ *   - fancy: Fancy variant
+ *
+ * @see template_preprocess_views_view_teaser_collection()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'views-view-teaser-collection'
+  ]
+%}
+{% set teaser_collection %}
+  {% include '@storybook/collection/simple-teaser-collection.twig' with {
+    items: rows
+  } %}
+{% endset %}
+
+<div{{ attributes.addClass(classes) }}>
+  {% if view.current_display == 'homepage_events' %}
+    {% include "@storybook/teaser-slab/event.twig" with {
+      headline: view.title,
+      link: { url: '/news-events/events', title: 'See All Events' },
+      teaser_collection: teaser_collection
+    } %}
+  {% elseif view.current_display == 'homepage_locations' %}
+    {% include "@storybook/teaser-slab/event.twig" with {
+      headline: view.title,
+      link: { url: '/locations', title: 'See All Locations' },
+      teaser_collection: teaser_collection
+    } %}
+  {% endif %}  
+</div>

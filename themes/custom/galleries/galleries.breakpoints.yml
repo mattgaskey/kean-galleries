@@ -1,0 +1,18 @@
+galleries.medium:
+  label: medium
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: '1'
+  multipliers:
+    - '1x'
+galleries.large:
+  label: wide
+  mediaQuery: 'all and (min-width: 1024px)'
+  weight: 1
+  multipliers:
+    - 1x
+galleries.xl:
+  label: xl
+  mediaQuery: 'all and (min-width: 1280px)'
+  weight: 1
+  multipliers:
+    - 1x

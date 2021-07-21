@@ -1,0 +1,11 @@
+<div class="
+  relative max-w-max
+  before:content-empty before:absolute before:pointer-events-none before:inset-0
+  before:bg-black before:bg-opacity-50 hover:before:bg-opacity-40 focus-within:before:bg-opacity-40 before:transition-colors
+">
+    <a href="{{ url }}" class="popup-iframe">
+      <span class="sr-only">Play video{{ title ? (': ' ~ title) : '' }}</span>
+      {{ picture }}
+    </a>
+  <svg aria-hidden="true" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 pointer-events-none fill-current text-white" viewBox="0 0 60 60"><g stroke="none" stroke-width="1" fill-rule="evenodd"><g transform="translate(-141.000000, -1908.000000)"><g transform="translate(40.000000, 1741.000000)"><g transform="translate(101.000000, 167.000000)"><g><path d="M30,0 C46.5685425,0 60,13.4314575 60,30 C60,46.5685425 46.5685425,60 30,60 C13.4314575,60 0,46.5685425 0,30 C0,13.4314575 13.4314575,0 30,0 Z M30,5 C16.1928813,5 5,16.1928813 5,30 C5,43.8071187 16.1928813,55 30,55 C43.8071187,55 55,43.8071187 55,30 C55,16.1928813 43.8071187,5 30,5 Z"></path><polygon points="26.25 40.0923888 26.25 20 39.6449259 30.0729842"></polygon></g></g></g></g></g></svg>
+</div>

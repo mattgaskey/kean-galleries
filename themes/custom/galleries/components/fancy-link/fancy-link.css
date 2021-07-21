@@ -1,0 +1,34 @@
+.fancy-link span:after {
+  -moz-transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.fancy-link:hover span:after {
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+
+@media (prefers-reduced-motion) {
+  .fancy-link span:after {
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+}
+
+.fancy-link.masonry--link {
+  line-height: 2.25rem !important;
+}
+
+@screen sm {
+  .fancy-link.masonry--link {
+    line-height: 3rem !important;
+    font-size: 1.25rem !important;
+  }
+}
+

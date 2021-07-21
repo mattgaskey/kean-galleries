@@ -1,0 +1,20 @@
+<div class="flex flex-col lg:flex-row">
+  {% if picture %}
+    <div class="media-side lg:flex-3/5 mb-10 md:mb-0">
+      {{ picture }}
+    </div>
+  {% endif %}
+
+  <div class="text-side lg:flex-2/5 flex flex-col space-y-4 justify-center {{ flipped ? 'md:order-first md:pl-5 md:pr-10' : 'md:pl-10 md:pr-5' }}">
+    <div>
+      {% include '../fancy-link/fancy-link.twig' with {
+        link: link,
+        large: true
+      } only %}
+    </div>
+
+    {% if intro %}
+      <p class="text-sm leading-relaxed text-black">{{ intro }}</p>
+    {% endif %}
+  </div>
+</div>

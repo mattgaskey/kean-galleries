@@ -1,0 +1,100 @@
+{{ attach_library('galleries/scroll-nav') }}
+{{ attach_library('galleries/dropdown-nav') }}
+{% set date = content.field_date|children|first.start_date['#attributes'].datetime|date('F j, Y') ~ ' - ' ~ content.field_date|children|first.end_date['#attributes'].datetime|date('F j, Y') %}
+{% set page_title = content.field_title_override|children ? content.field_title_override|children : label|children|first %}
+{% set scroll_nav %}
+  {% embed "@storybook/navigation/scroll-nav.twig" with { items: '', ticket_link: ticket_link } %}
+    {% block share %}
+      {{ drupal_entity('block', 'socialsharingblock', check_access=false) }}
+    {% endblock %}
+  {% endembed %}
+{% endset %}
+{% set scroll %}
+  {% embed "@storybook/scroll/scroll.twig" with {
+    ticket_link: fractal_link(content.field_tickets)|children|first,
+    logged_in: logged_in
+  } %}
+    {% block sidebar %}
+      <div class="hidden top-0 lg:block lg:sticky flex-1/3 {{ logged_in ? 'pt-admin' }}">
+        {% block scroll_nav %}
+          {{ scroll_nav }}
+        {% endblock %}
+      </div>
+      
+    {% endblock %}
+    {% block main %}
+      <div class="md:flex-2/3 space-y-10">
+        {% include "@storybook/page-header/simple.twig" with { 
+          headline: page_title,
+          date: date,
+          location: content.field_location
+        } %}
+        <div class="dropdown-nav__wrapper lg:hidden sticky top-0 bg-white z-10 {{ logged_in ? 'pt-admin' }}">
+          {% include "@storybook/dropdown/dropdown.twig" with { items: '' } %}
+        </div>
+        {% if content.field_tickets|children %}
+          <div class="lg:hidden flex flex-row items-center justify-between">
+            {% include "@storybook/button-link/normal.twig" with {
+              link: fractal_link(content.field_tickets)|children|first
+            } %}
+          </div>
+        {% endif %}
+        {% if content.field_banner_media|children %}
+          {% include "@storybook/media/figure.twig" with {
+            media: content.field_banner_media,
+            caption: content.field_banner_media_caption|children
+          } %}
+        {% endif %}
+        {% if content.field_about|children %}
+          {% include "@storybook/h/h.twig" with { 
+            headline: 'About the Exhibition',
+            level: 2
+          } %}
+          {{ content.field_about }}
+        {% endif %}
+        {% if content.field_selected_works|children %}
+          {% include "@storybook/h/h.twig" with {
+            headline: 'Selected Works',
+            level: 2
+          } %}
+          {{ content.field_selected_works }}
+        {% endif %}
+        {% if content.field_artist|children %}
+          {% include "@storybook/h/h.twig" with {
+            headline: 'About the Artist',
+            level: 2
+          } %}
+          {{ content.field_artist }}
+        {% endif %}
+        {% if content.field_featured|children or content.field_news_and_events|children %}
+          {% include "@storybook/h/h.twig" with {
+            headline: 'Exhibition News & Events',
+            level: 2
+          } %}
+          {{ content.field_featured }}
+          {{ content.field_news_and_events }}
+        {% endif %}
+        {% if content.field_press|children %}
+          {{ content.field_press }}
+        {% endif %}
+        {% if content.field_extra_heading|children or content.field_extra_wysiwyg|children %}
+          {% include "@storybook/h/h.twig" with {
+            level: 2,
+            headline: content.field_extra_heading|children
+          } %}
+          {{ content.field_extra_wysiwyg }}
+        {% endif %}
+      </div>
+    {% endblock %}
+  {% endembed %}
+{% endset %}
+
+{% embed "node.html.twig" with { has_sidebar: true, sidebar_left: true } %}
+
+  {% block content %}
+    {{ scroll }}
+  {% endblock %}
+
+{% endembed %}
+
+

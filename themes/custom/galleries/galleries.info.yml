@@ -1,0 +1,41 @@
+name: galleries
+type: theme
+description: 'Custom theme with Storybook style guide.'
+package: Core
+version: VERSION
+core: 8.x
+core_version_requirement: ^8 || ^9
+base theme: false
+dependencies:
+  - newcity_customizations
+
+regions:
+  content: Main content
+  main_nav: Main navigation
+  mobile_main_nav: Mobile main navigation
+  contact: Footer contact column
+  footer_menus: Footer menus
+  footer_buttons: Footer buttons
+  newsletter: Newsletter signup
+  accessibility: Accessibility statement
+  sidebar: Sidebar content
+
+libraries:
+  - galleries/base
+  - core/normalize
+  - galleries/main-nav
+  - galleries/header
+  - galleries/footer
+
+components:
+  namespaces:
+    storybook:
+      - components
+    utility:
+      - utility
+
+ckeditor_stylesheets:
+  - https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap
+  - css/base/tailwind.css
+  - css/base/cke_editable.css
+  - css/components/table/table.css

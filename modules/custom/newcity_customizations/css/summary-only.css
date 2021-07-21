@@ -1,0 +1,3 @@
+.summary-only .text-format-wrapper .form-type-textarea:not(:first-child) {
+  display: none;
+}

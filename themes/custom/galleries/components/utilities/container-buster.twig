@@ -1,0 +1,36 @@
+{#
+  This is a utility for busting out of a `.container` so that the background of
+  the component in question extends as far to the left and right as possible.
+
+  If the component is in the main area next to a sidebar, use the
+  `against_right_sidebar` or `against_left_sidebar` flag as appropriate
+  (to stop the component from overlapping the sidebar).
+
+  Relies on <body> having `overflow-x: hidden;` (to avoid horizontal scroll-arrows).
+  Will break if any parents with (or within) `.container` have `overflow-x: hidden;`
+
+  Use with `embed` and `block` like this:
+
+  {% embed '../utilities/container-buster.twig' with {
+    extra_classes: 'bg-gray-light',
+    against_right_sidebar: true
+  } %}
+    {% block component %}
+      <!-- markup for component goes here -->
+    {% endblock %}
+  {% endembed %}
+
+  Since this tool is only useful when there's a background color,
+  we'll always want to include at least the background color in `extra_classes`,
+  either with a `bg-` class or (e.g.) `color-block red` (see `_layout.css`).
+  May also wish to add a `mt-` class.
+
+  For examples, see `people-detail-contact-block.twig` and `in-text-alert.twig`.
+#}
+
+<div class="sm:-mx-full-width {{ extra_classes }} {{ against_right_sidebar ? 'lg:mr-0' }} {{ against_left_sidebar ? 'lg:ml-0' }}">
+  <div class="sm:mx-full-width {{ against_right_sidebar ? 'lg:mr-0' }} {{ against_left_sidebar ? 'lg:ml-0' }}">
+    {% block component %}
+    {% endblock %}
+  </div>
+</div>

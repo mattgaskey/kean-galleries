@@ -1,0 +1,73 @@
+table {
+  @apply border-collapse mt-10;
+}
+
+th, td {
+  @apply p-2;
+}
+
+th:first-child {
+  @apply text-left;
+}
+
+thead {
+  @apply bg-red text-white;
+}
+
+/* thead tr:last-child th {
+  @apply border-solid border-blue border-b-4;
+} */
+
+tbody tr {
+  @apply border-solid border-gray border-b-2;
+}
+
+tbody tr:last-child {
+  @apply border-b-0;
+}
+
+table caption {
+  @apply p-2 italic text-left bg-gray text-white;
+  caption-side: bottom;
+}
+
+.table--striped tbody tr:nth-child(odd) th,
+.table--striped tbody tr:nth-child(odd) td {
+  @apply bg-gray-light;
+}
+
+.table-wrapper.table-wrapper--overflow table {
+  @apply max-w-full overflow-auto;
+}
+
+@media screen and (max-width: 767px) {
+  .table-wrapper--columnize thead {
+    @apply hidden;
+  }
+
+  .table-wrapper--columnize tr {
+    @apply block relative py-5 px-0;
+  }
+
+  .table-wrapper--columnize tr:first-of-type {
+    @apply border-t-2;
+  } 
+
+  .table-wrapper--columnize td {
+    @apply table-row;
+  }
+
+  .table-wrapper--columnize td::before {
+    content: attr(data-label);
+    @apply table-cell font-bold text-right pl-2 pr-6 py-3;
+  }
+
+  .table-wrapper--columnize td:last-child::after {
+    @apply content-empty absolute left-0 right-0 bottom-0;
+  }
+
+  .table-wrapper--columnize .table--striped tbody th,
+  .table-wrapper--columnize .table--striped tbody td {
+    background: transparent !important;
+  }
+}

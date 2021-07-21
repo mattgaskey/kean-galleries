@@ -1,0 +1,30 @@
+{#
+  The accompanying `linkify.js` script gives this component the "pointer" cursor
+  on hover and adds a click-handler that navigates to the url specified in
+  `data-linkify-url`.
+
+  Good for when you already have a dedicated link but another nearby element
+  (an image, typically) is supposed to be a link, too. (Having "redundant" links
+  isn't good for accessibility, so in this case it's actually better to have
+  the supplementary link be a "fake" link.)
+
+  Use with `embed` and `block` like this:
+
+  {% embed '../utilities/linkify.twig' with {
+    url: [[some url]],
+    extra_classes: 'inline-block w-40'
+  } %}
+    {% block component %}
+      <!-- markup for component goes here -->
+    {% endblock %}
+  {% endembed %}
+
+  (extra_classes is optional, url is required)
+
+  For an example, see `teaser/stacked.twig`.
+#}
+
+<div data-linkify-url="{{ url }}" class="{{ extra_classes ? extra_classes }}">
+  {% block component %}
+  {% endblock %}
+</div>

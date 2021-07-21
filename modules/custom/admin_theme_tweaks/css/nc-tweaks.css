@@ -1,0 +1,31 @@
+.allday-label {
+  display: none !important;
+}
+
+.duration-wrapper {
+  display: none !important;
+}
+
+/* Set appropriate editor heights based on the rows attribute. */
+textarea[rows="1"] + .cke .cke_contents {
+  height: 6rem !important;
+}
+
+/* Allow the maximize button to still operate correctly. */
+[style^="position: static"] textarea[rows] + .cke .cke_maximized {
+  position: fixed !important;
+  height: 100% !important;
+}
+[style^="position: static"] textarea[rows] + .cke .cke_contents {
+  height: 100% !important;
+}
+
+.node-exhibition-edit-form .form-item--sticky-value,
+.node-news-edit-form .form-item--sticky-value,
+.node-page-edit-form .form-item--sticky-value {
+  display: none !important;
+}
+
+.node-page-edit-form .node-form-options {
+  display: none !important;
+}

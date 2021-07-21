@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Contains views_teaser_collection.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function views_teaser_collection_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the views_teaser_collection module.
+    case 'help.page.views_teaser_collection':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Teaser collection style plugins for Views') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function views_teaser_collection_theme($existing, $type, $theme, $path) {
+  return [
+    'views_view_teaser_collection' => [
+      'options' => [
+        'fancy' => FALSE,
+      ],
+    ],
+    'views_view_stacked_teaser_collection' => [],
+    'views_view_gallery_collection' => [],
+    'views_view_featured_exhibition_collection' => [],
+  ];
+}

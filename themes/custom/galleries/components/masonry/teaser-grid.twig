@@ -1,0 +1,15 @@
+<div class="container">
+  {% if headline %}
+    <div class="flex flex-col sm:flex-row mb-5">
+      <div>{% include "../h/h.twig" with { level: 2, headline: headline } only %}</div>
+      {% if link %}
+        <div class="sm:ml-5">{% include "../fancy-link/fancy-link.twig" with { link: link, extra_classes: 'inline-block mt-4' } only %}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+  <div class="masonry column-count-3">
+    {% for teaser in teasers %}
+      <div class="item">{{ teaser }}</div>
+    {% endfor %}
+  </div>
+</div>

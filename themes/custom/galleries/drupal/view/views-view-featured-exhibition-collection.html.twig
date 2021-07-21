@@ -1,0 +1,23 @@
+{#
+/**
+ * Default theme implementation for Views to output a Featured exhibition Collection.
+ *
+ * Available variables:
+ * - rows: the View result
+ *
+ * @see template_preprocess_views_view_featured_exhibition_collection()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{%
+  set classes = [
+    'views-view-featured-exhibition-collection',
+    'space-y-7',
+    'container'
+  ]
+%}
+<div{{ attributes.addClass(classes|join(' ')) }}>
+  {{ rows }}
+</div>

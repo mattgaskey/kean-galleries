@@ -1,0 +1,67 @@
+.pager__items {
+  @apply font-bold text-sm;
+}
+
+.pager__item {
+  @apply inline-block leading-none;
+}
+
+.pager__item--ellipsis {
+  @apply py-2 px-1 sm:px-2 text-gray;
+}
+
+.pager__item a {
+  @apply inline-block py-2 px-2 sm:px-3;
+}
+
+.pager__item:not(.pager__item--previous):not(.pager__item--next) a:hover {
+  @apply bg-blue;
+}
+
+.pager__item--previous a, .pager__item--next a {
+  @apply px-0;
+}
+
+.pager__item--previous a:hover, .pager__item--next a:hover {
+  @apply text-red;
+}
+
+.pager__item.is-active a {
+  @apply bg-yellow;
+}
+
+/* .pager__item:not(.is-active):not(.pager__item--ellipsis) a {
+  @apply text-blue;
+} */
+
+/* .pager__item:not(.is-active):not(.pager__item--ellipsis) a:hover {
+  @apply text-cyan-light;
+} */
+
+/* .pager__item:not(.is-active):not(.pager__item--ellipsis) span:not(.pager__arrow) {
+  @apply underline;
+} */
+
+/* .pager__item.is-active a {
+  @apply underline;
+} */
+
+/* .pager__item--ellipsis {
+  @apply text-gray-600;
+} */
+
+.pager__item--previous span[aria-hidden], .pager__item--next span[aria-hidden] {
+  @apply hidden sm:inline;
+}
+
+.pager__item--previous::after, .pager__item--next::before {
+  @apply sm:px-2 sm:content-pipe sm:text-gray;
+}
+
+.pager__item--previous a::before {
+  @apply content-triangle-down inline-block text-xs mr-2 sm:mr-1-px transform rotate-90 -translate-y-1-px sm:scale-75;
+}
+
+.pager__item--next a::after {
+  @apply content-triangle-down inline-block text-xs ml-2 sm:ml-1-px transform -rotate-90 -translate-y-1/2-px sm:scale-75;
+}

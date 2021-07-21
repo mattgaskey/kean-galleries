@@ -1,0 +1,16 @@
+@import "tailwindcss/base";
+@import './_base.css';
+@import './_utilities.css';
+
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* PurgeCSS Whitelist:
+  md:hidden
+  lg:hidden
+  lg:mb-32
+  pt-5
+  sm:pt-7
+  lg:pt-12
+  lg:py-0
+*/

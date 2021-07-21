@@ -1,0 +1,15 @@
+<ul>
+  {% for link in links %}
+    <li class="
+      {{ inline ? 'inline' }}
+      {% if not loop.first %}
+        {{ small ? 'mt-2' : 'mt-5' }}
+        {{ inline ? 'ml-4' }}
+      {% endif %}
+    ">
+      <a href="{{ link.url }}" class="
+        {{ small ? 'text-sm underline decoration-inherit hover:decoration-transparent' : 'font-bold text-lg shadow-underline hover:shadow-underline-transparent' }}
+      ">{{ link.title }}</a>
+    </li>
+  {% endfor %}
+</ul>

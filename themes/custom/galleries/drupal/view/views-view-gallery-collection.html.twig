@@ -1,0 +1,25 @@
+{#
+/**
+ * Default theme implementation for Views to output a Letter Group Collection.
+ *
+ * Available variables:
+ * - rows
+ *
+ * @see template_preprocess_views_view_letter_group_collection()
+ *
+ * @ingroup themeable
+ */
+#}
+{{ attach_library('galleries/masonry') }}
+{%
+  set classes = [
+    'views-view-gallery-collection',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {% include "@storybook/masonry/teaser-grid.twig" with {
+    headline: view.title,
+    link: { url: '/exhibtions', title: 'See All Exhibitions' },
+    teasers: rows
+  } %}
+</div>

@@ -1,0 +1,24 @@
+{% set tag = 'h' ~ level %}
+
+{% if override_classes is not empty %}
+  {% set classes = override_classes %}
+{% else %}
+  {% if level == 1 %}
+    {% set classes = 'font-medium text-blue text-4xl sm:text-6xl' %}
+  {% elseif level == 2 %}
+    {% set classes = 'font-medium text-blue text-3xl sm:text-5xl' %}
+  {% elseif level == 3 %}
+    {% set classes = 'font-medium text-blue text-2xl sm:text-3xl' %}
+  {% else %}
+    {% set classes = 'font-medium text-blue text-xl sm:text-2xl' %}
+  {% endif %}
+{% endif %}
+
+{% set classes = classes|default('') ~ ' ' ~ extra_classes %}
+
+{#
+  Use `extra_classes` to add ADDITIONAL classes to the above defaults.
+  Use `override_classes` to replace default classes.
+#}
+
+<{{ tag }} class="{{ classes }}">{{ headline }}</{{ tag }}>

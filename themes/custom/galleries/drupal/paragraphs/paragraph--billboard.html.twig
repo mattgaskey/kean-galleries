@@ -1,0 +1,7 @@
+{% set catch_cache = content|render %}
+{% include '@storybook/billboard/billboard.twig' with {
+  background: content.field_background,
+  headline: content.field_headline,
+  wysiwyg: content.field_description,
+  links: content.field_buttons
+} %}

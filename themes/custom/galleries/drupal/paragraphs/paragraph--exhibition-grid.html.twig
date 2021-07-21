@@ -1,0 +1,6 @@
+{{ attach_library('galleries/masonry') }}
+{% include "@storybook/masonry/teaser-grid.twig" with {
+  headline: content.field_headline|children,
+  link: fractal_link(content.field_more_link)|children|first,
+  teasers: content.field_exhibitions|children
+} %}

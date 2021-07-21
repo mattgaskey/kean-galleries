@@ -1,0 +1,17 @@
+<div class="container">
+  <section{% if not headline %} aria-label="Quote block"{% endif %} class="space-y-6 lg:space-y-8">
+
+    {% if headline %}
+      {% include '../h/h.twig' with { level: '2', headline: headline } only %}
+    {% endif %}
+    
+    {% block quotes %}
+      {% for quote in quotes %}
+        <div class="flex flex-col mb-10 pb-10 border-b-2 border-gray-light">
+          {% include "../quote/quote.twig" with { quotation: quote.quotation, attribution: quote.attribution } %}
+        </div>
+      {% endfor %}
+    {% endblock %}
+    
+  </section>
+</div>

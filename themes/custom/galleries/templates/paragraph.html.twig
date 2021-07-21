@@ -1,0 +1,6 @@
+{% set catch_cache = content|render %}
+<div{{ attributes }}>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</div>

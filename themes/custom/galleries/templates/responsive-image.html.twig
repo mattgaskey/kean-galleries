@@ -1,0 +1,38 @@
+{#
+/**
+  * @file
+  * Default theme implementation of a responsive image.
+  *
+  * Available variables:
+  * - sources: The attributes of the <source> tags for this <picture> tag.
+  * - img_element: The controlling image, with the fallback image in srcset.
+  * - output_image_tag: Whether or not to output an <img> tag instead of a
+  *   <picture> tag.
+  *
+  * @see template_preprocess()
+  * @see template_preprocess_responsive_image()
+  *
+  * @ingroup themeable
+  */
+#}
+{# fullscreen link appears mostly for wysiwyg images #}
+{% set link_to_fullscreen = responsive_image_style_id in ['content_width', 'partial_width', 'third_width', 'quarter_width'] %}
+{% if output_image_tag %}
+  {{ img_element }}
+{% else %}
+  <picture class="relative block">
+    {% if link_to_fullscreen %}
+    <a href="{{ file_url(uri) }}" class="block absolute top-0 right-0 open-link bg-blue-500 bg-opacity-75 hover:bg-blue-800 flex items-center justify-center">
+      <span class="visually-hidden">Open image</span>
+      <img src="{{ static_assets ~ 'icon_fullscreen_sm.svg' }}" alt="icon"/>
+    </a>
+    {% endif %}
+    {% if sources %}
+      {% for source_attributes in sources %}
+        <source{{ source_attributes }}/>
+      {% endfor %}
+    {% endif %}
+    {# The controlling image, with the fallback image in srcset. #}
+    {{ img_element }}
+  </picture>
+{% endif %}

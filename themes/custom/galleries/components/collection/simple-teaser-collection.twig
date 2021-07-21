@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="{{ items|length < 2 ? 'small-container' }}">
+    <ul class="
+      mx-auto
+      {% if items|length > 1 %}
+        grid gap-10 md:gap-x-16 max-w-max sm:grid-cols-2 lg:grid-cols-3
+        
+        {% if items|length > 3 %}
+        xl:grid-cols-4
+        {% endif %}
+      {% endif %}    
+    ">
+      {% for simple_teaser in items %}
+        <li>{{ simple_teaser }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

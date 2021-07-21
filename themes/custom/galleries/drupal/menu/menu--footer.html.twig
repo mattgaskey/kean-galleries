@@ -1,0 +1,10 @@
+<div class="text-sm lg:pl-7">
+  {# may need to revisit this list's column-layout if any longer link-title are added #}
+  <ul class="space-y-3">
+    {% for link in items %}
+      <li class="break-inside-avoid">
+        {% include "../fancy-link/fancy-link.twig" with { link: link, small: true } %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>

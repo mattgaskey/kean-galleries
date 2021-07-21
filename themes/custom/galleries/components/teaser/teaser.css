@@ -1,0 +1,9 @@
+.featured-event:before {
+  width: 0;
+}
+
+@screen lg {
+  .featured-event:before {
+    width: 25%;
+  }
+}

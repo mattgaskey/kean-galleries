@@ -1,0 +1,20 @@
+services:
+  newcity_customizations.twig_extensions:
+    arguments: 
+      - '@renderer'
+    class: Drupal\newcity_customizations\TwigExtension\Extension
+    tags:
+      - { name: twig.extension }
+
+  newcity_customizations.twig.loader:
+    class: Drupal\newcity_customizations\Template\Loader\NewcityLoader
+    arguments: ['@components.info', '@theme.manager']
+    tags:
+      # drupal/components loader is priority 200
+      - { name: twig.loader, priority: 300 }
+
+  newcity_customizations.theme:
+    class: Drupal\newcity_customizations\Theme
+    arguments:
+      - '@entity_type.manager'
+      - '@theme.manager'

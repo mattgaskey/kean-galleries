@@ -1,0 +1,4 @@
+admin-styling:
+  css:
+    theme:
+      css/nc-tweaks.css: {}

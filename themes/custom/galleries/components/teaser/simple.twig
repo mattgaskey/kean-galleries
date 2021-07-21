@@ -1,0 +1,29 @@
+<div class="space-y-4">
+  {% if picture %}
+    <div>
+      {% if link.url %}
+        {% embed '../utilities/linkify.twig' with { url: link.url } %}
+          {% block component %}{{ picture }}{% endblock %}
+        {% endembed %}
+      {% else %}
+        {{ picture }}
+      {% endif %}
+      
+    </div>
+  {% endif %}
+
+  <div>
+    {% if link.url %}
+      {% include '../fancy-link/fancy-link.twig' with {
+        link: link
+      } only %}
+    {% else %}
+      <div class="text-xl sm:text-2xl">{{ link.title }}</div>
+    {% endif %}
+   
+  </div>
+
+  {% if intro %}
+    <p class="text-sm leading-relaxed">{{ intro }}</p>
+  {% endif %}
+</div>

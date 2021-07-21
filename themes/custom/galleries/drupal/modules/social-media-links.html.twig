@@ -1,0 +1,40 @@
+{#
+/**
+ * Available variables
+ * - elements: array of element contains social media link.
+ *
+ */
+#}
+
+
+<div class="social-media-sharing flex flex-row flex-no-wrap items-center">
+  <div class="text-lg">Share</div>
+  <div class="pl-4">
+    <ul class="inline-flex space-x-1">
+      {% set classes = [
+      'share'
+      ]
+      %}
+      {% for element in elements %}
+        {% if element.forward_dialog == 1 %}
+          {% set classes = classes|merge(['use-ajax']) %}
+          {% set dialogType = "data-dialog-type=dialog" %}
+          {% set dialogOptions = "data-dialog-options=" ~ {'width': '600'}|json_encode %}
+        {% endif %}
+        <li class="social-media-sharing__item">
+          <a {{ dialogType }} {{ dialogOptions }} {{ element.attr.target }} {{ element.attr.rel }} {{ element.attr.class.addClass(classes) }}  {{ element.api }}
+            title="{{ element.text }}">
+            {% if element.img %}
+              <img alt="{{ element.text }}" src="{{ element.img }}">
+            {% elseif element.svg %}
+              {{ element.svg|raw }}
+            {% else %}
+              {{ element.text }}
+            {% endif %}
+          </a>
+
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

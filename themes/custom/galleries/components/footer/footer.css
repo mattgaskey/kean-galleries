@@ -1,0 +1,8 @@
+.email-link a,
+.phone-link a {
+  text-decoration: underline;
+}
+.email-link a:hover,
+.phone-link a:hover {
+  text-decoration: transparent;
+}

@@ -1,0 +1,50 @@
+header, footer {
+  display: none;
+}
+
+* {
+  background-image: none !important;
+  background-color: white !important;
+  color: black !important;
+}
+
+a:after {
+  content:" (" attr(href) ") ";
+  font-weight: 600;
+}
+
+/* [class*="-mt-"] {
+  margin-top: 0 !important;
+}
+
+[class*="pb-"] {
+  padding-bottom: 1rem !important;
+}
+
+[class*="shadow-"] {
+  box-shadow: none !important;
+}
+
+.page-header div.md\:flex-1 img {
+  max-width: 33%;
+}
+
+.sidebar-container {
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+}
+
+.sidebar-section.pdfs,
+.sidebar-section.social-share,
+.sidebar-section.email-signup,
+.related-articles .email-signup,
+.back-to-top,
+#block-galleries-breadcrumbs {
+  display: none;
+}
+
+.push-up, .push-up-more {
+  margin-top: 0;
+}
+
+ */

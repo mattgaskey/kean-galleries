@@ -1,0 +1,26 @@
+<div class="space-y-2 {{ list ? 'mb-10 pb-10 border-b-2 border-gray-light' }}">
+  {% if date %}
+    <div class="text-gray-dark text-sm">{% spaceless %}      
+      <span>{{ date }}</span>
+      {% if time %}
+        <span class="before:content-pipe before:mx-2.5 before:text-base">{{ time }}</span>
+      {% endif %}
+    {% endspaceless %}</div>
+  {% endif %}
+  
+  <div>
+    {% set large = list %}
+    {% include '../fancy-link/fancy-link.twig' with { link: link, large: large } only %}
+  </div>
+
+  {% if not list %}
+    {% if intro %}
+      <p class="text-sm leading-relaxed">{{ intro }}</p>
+    {% endif %}
+
+    {% if location %}
+      <div class="text-sm leading-relaxed italic">{{ location }}</div>
+    {% endif %}
+  {% endif %}
+  
+</div>

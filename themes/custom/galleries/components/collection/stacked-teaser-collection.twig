@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="{{ small ? 'max-w-lg' : 'small-container' }}">
+    <ul class="space-y-8">
+      {% for item in items %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

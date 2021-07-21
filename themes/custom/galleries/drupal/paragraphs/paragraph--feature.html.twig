@@ -1,0 +1,21 @@
+{{ attach_library('galleries/feature') }}
+{% set catch_cache = content|render %}
+{% set flipped = paragraph.field_flipped.value %}
+{% set fancy = paragraph.field_fancy.value %}
+{% if fancy %}
+  {% include "@storybook/feature/fancy.twig" with {
+    flipped: flipped,
+    picture: content.field_media,
+    headline: content.field_headline|children,
+    wysiwyg: content.field_description|children,
+    link_list: content.field_buttons
+  } %}
+{% else %}
+  {% include "@storybook/feature/simple.twig" with {
+    flipped: flipped,
+    picture: content.field_media,
+    headline: content.field_headline|children,
+    wysiwyg: content.field_description|children,
+    link_list: content.field_buttons
+  } %}
+{% endif %}

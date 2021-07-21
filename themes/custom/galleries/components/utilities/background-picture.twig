@@ -1,0 +1,34 @@
+<div class="relative text-white">
+  <div aria-hidden="true" class="
+    absolute inset-0 overflow-hidden -z-10
+    descendants:w-full descendants:h-full
+    descendant-img:object-cover descendant-img:object-top
+    {% if variant == 'red' %}
+      descendant-img:opacity-15 before:bg-red
+    {% elseif variant == 'red-alt' %}
+      descendant-img:opacity-50 descendant-img:mix-blend-multiply before:bg-red
+    {% else %}
+      descendant-img:opacity-50 descendant-img:mix-blend-multiply before:bg-blue
+    {% endif %}
+    before:content-empty before:absolute before:inset-0
+  ">
+    {{ picture }}
+  </div>
+
+  <div class="relative">
+    {% block component %}{{ component }}{% endblock %}
+  </div>
+</div>
+
+{#
+  Use with `embed` and `block` like this:
+
+  {% embed '../utilities/background-picture.twig' with {
+    variant: 'red', [or 'violet']
+    picture: picture
+  } %}
+    {% block component %}
+      <!-- markup for component goes here -->
+    {% endblock %}
+  {% endembed %}
+#}

@@ -1,0 +1,19 @@
+<ul class="inline-flex {{ small ? 'space-x-3' : 'space-x-5' }}">
+  {% for link in links %}
+    <li>
+      <a href="{{ link.url }}">
+        <span class="sr-only">{{ link.title }}</span>
+        <svg aria-hidden="true" class="
+          fill-current transition-colors {{ small ? 'w-5 h-5' : 'w-8 h-8' }}
+          {% if variant == 'white' %}
+            text-white hover:text-yellow
+          {% else %}
+            text-black hover:text-gray
+          {% endif %}
+        ">
+          {{ link.svg|raw }}
+        </svg>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

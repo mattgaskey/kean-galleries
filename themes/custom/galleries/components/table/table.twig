@@ -1,0 +1,57 @@
+{% if table is empty or block('table_body') is empty %}
+<div class="table-wrapper {{ responsive_strategy }}">
+  <table class="{{ variant }}">
+    {% if caption %}<caption>{{ caption }}</caption>{% endif %}
+    {% block table_head %}
+      <thead>
+        <tr>
+          <th scope="col">Row Labels</th>
+          <th class="align-right" scope="col">Some Numbers</th>
+          <th class="align-center" scope="col">Tag</th>
+          <th scope="col">Too Much Text</th>
+          <th scope="col">Yet More Text</th>
+        </tr>
+      </thead>
+    {% endblock %}
+    {% block table_body %}
+      <tbody>
+        <tr>
+          <th scope="row">Row Label One</th>
+          <td class="align-right">10,000</td>
+          <td class="align-center">Lorem</td>
+          <td>Suspendisse mollis nunc et magna laoreet, vitae egestas metus faucibus. Vivamus sed efficitur odio, eu ultricies odio. Aenean blandit auctor.</td>
+          <td>Sed vestibulum aliquam orci, nec.</td>
+        </tr>
+        <tr>
+          <th scope="row">Row Label Two</th>
+          <td class="align-right">50¢</td>
+          <td class="align-center">Ipsum</td>
+          <td>Vivamus a pellentesque libero. Maecenas consequat mollis metus in gravida. Orci varius natoque penatibus et magnis dis parturient montes, nascetur.</td>
+          <td>In dui libero, tempus quis.</td>
+        </tr>
+        <tr>
+          <th scope="row">Row Label Three</th>
+          <td class="align-right">14.67</td>
+          <td class="align-center">Dolor</td>
+          <td>Aliquam eget dolor cursus, suscipit massa id, lobortis eros. Cras ac hendrerit est, eu mattis mi. Donec posuere, nisl in.</td>
+          <td>Praesent libero mauris, laoreet id.</td>
+        </tr>
+        <tr>
+          <th scope="row">Row Label Four</th>
+          <td class="align-right">22</td>
+          <td class="align-center">Sit</td>
+          <td>Integer auctor posuere porta. Sed nibh odio, maximus ut justo sed, dignissim fringilla lacus. Praesent in dignissim urna, ac venenatis.</td>
+          <td>In hac habitasse platea dictumst.</td>
+        </tr>
+        <tr>
+          <th scope="row">Row Label Five</th>
+          <td class="align-right">12,345,678</td>
+          <td class="align-center">Amet</td>
+          <td>Vestibulum eleifend rutrum sapien, id eleifend lorem scelerisque sit amet. Maecenas ultrices sem ut purus imperdiet vulputate. Aliquam at tortor.</td>
+          <td>Curabitur et sem quam. Aliquam.</td>
+        </tr>																
+      </tbody>
+    {% endblock %}
+  </table>
+</div>
+{% endif %}

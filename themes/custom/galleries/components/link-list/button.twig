@@ -1,0 +1,17 @@
+{# use offset_left if list is left-aligned, not if it's centered #}
+<ul class="space-y-6">
+  {% block links %}
+    {% for link in links %}
+      {% set safe_link = 
+        {
+          url: link.content['#url'],
+          title: link.content['#title'] 
+        }
+      %}
+
+      <li class="{{ inline ? 'inline-block' }}">
+        {% include '../button-link/normal.twig' with { link: safe_link|default(link), variant: variant } only %}
+      </li>
+    {% endfor %}
+  {% endblock %}
+</ul>

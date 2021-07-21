@@ -1,0 +1,9 @@
+{% for item in items %}
+  {% include "@storybook/button-link/normal.twig" with {
+    variant: 'block',
+    link: {
+      url: item.content['#url'],
+      title: item.content['#title']
+    }
+  } %}
+{% endfor %}

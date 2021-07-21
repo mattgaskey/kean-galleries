@@ -1,0 +1,16 @@
+{% set catch_cache = content|render %}
+{% set page_title = content.field_title_override|children ? content.field_title_override|children : label|children|first %}
+
+{% extends 'node.html.twig' %}
+
+{% block content %}
+  <div class="container vertical-space">
+    {% if not is_front %}
+      {% include "@storybook/h/h.twig" with {
+        headline: page_title,
+        level: 1
+      } %}
+    {% endif %}
+    {{ content|without('field_title_override') }}
+  </div>
+{% endblock %}

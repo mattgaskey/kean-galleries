@@ -1,0 +1,47 @@
+{% embed "./page.twig" with { sidebar_left: true } %}
+
+{% block content %}
+  {% embed '../scroll/scroll.twig' with { ticket_link: { url: '#', title: 'Purchase tickets' } } %}
+    {% block main %}
+      <div class="container lg:flex-2/3">
+        {{ alert }}
+        {{ simple_page_header }}
+        {{ banner }}
+        <div class="my-7 space-y-7">
+          {% include "../h/h.twig" with { headline: 'About the Exhibition', level: 2 } %}
+          <p class="prose prose-lg">Maecenas in arcu velit. Duis dui massa, euismod sed maximus vel, pulvinar a urna. Nam ac placerat urna. Vivamus consequat mi sed mi porttitor, eget iaculis turpis dictum. Nunc vehicula metus id placerat gravida. Integer et massa ante. Quisque facilisis, ante vitae pulvinar pellentesque, justo magna sodales quam, eu tincidunt ex dui convallis tellus. Suspendisse gravida sapien lacus, aliquam efficitur leo dapibus a. Nulla quis rhoncus mauris. Vivamus eget ipsum arcu. Proin ultrices metus sem, vel tincidunt dui bibendum at.</p>
+          {% include "../h/h.twig" with { headline: 'Artist Statement (or other subsection)', level: 3 } %}
+          <p class="prose prose-lg">Proin quis nulla eleifend, iaculis nunc elementum, finibus dolor. In pharetra porta convallis. Sed eget lectus et orci iaculis mattis a at quam. Fusce eget fermentum massa. Nulla sit amet ultrices augue, semper mollis sapien. Proin volutpat turpis nec faucibus tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. In hac habitasse platea dictumst.</p>
+        </div>
+        {{ masonry }}
+        <div class="my-7">
+        {% include "../h/h.twig" with { headline: 'About the Artist', level: 2 } %}
+        </div>
+        <div class="my-7 prose lg:prose-lg xl:prose-xl">
+          {% include "../media/image.twig" with { src: 'https://place-hold.it/350x474', class: 'wysiwyg-float-right' } %}
+          {% include "../quote/quote.twig" with { 
+            quotation: 'I’ve always thought it to be the responsibility of the artist to help restore a degree of dignity, integrity and sense of humanity. At the core of my work is the effort to engage, enlighten and inspire. The tearing down of walls, accompanied by the building of bridges, is merely my attempt to right many of the wrongs existing within today’s society.',
+            attribution: 'Knowledge Bennett'
+          } %}
+          <p>Knowledge Bennett, born Dec. 5, 1976, is a self-taught visual artist currently based in Los Angeles, California. Fueled by his own entrepreneurial record of success in various industries, Knowledge has trained his artistic talent through work in commercial photography and fine art studio practices. Influenced by the rich history of various Post-War American art movements, Knowledge’s work displays a purposeful familiarity yet possesses a deeper and more meaningful conceptual understanding. Immersed in modes of mechanical reproduction, he creates artworks that play to a sociological understanding of political and ideological tensions that resonate in today's world.</p>
+        </div>
+        <div class="my-7">
+        {% include "../h/h.twig" with { headline: 'Exhibition News & Events', level: 2 } %}
+        </div>
+        {{ featured_event_teaser }}
+        <div class="my-7">
+          {% include "../teaser/event.twig" with { date: 'September 01, 2021', time: '5:30 - 8:30 pm', list: true, link: { url: '#', title: 'A Conversation with Knowledge Bennett' } } %}
+          {% include "../teaser/event.twig" with { list: true, link: { url: '#', title: 'The Title of a Press Relase or News Story' } } %}
+        </div>
+        {{ quote_list }}
+        <div class="my-7">
+          {% include "../h/h.twig" with { headline: 'Educational Materials', level: 2 } %}
+        </div>
+        <p class="prose lg:prose-lg xl:prose-xl"><em>This area could be used for items such as publications, related exhibits, history, audio or video tours…I’m not sure, but anything that would be useful to learn more about the artist and their work.</em></p>
+      </div>
+    {% endblock %}
+  {% endembed %}
+{% endblock %}
+
+{% endembed %}
+

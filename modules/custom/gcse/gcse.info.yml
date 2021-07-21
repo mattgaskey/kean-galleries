@@ -1,0 +1,6 @@
+name: Google Custom Search
+type: module
+description: Google Custom Search
+core_version_requirement: ^8 || ^9
+package: NewCity
+configure: gcse.settings

@@ -1,0 +1,123 @@
+/* concept from https://w3bits.com/css-masonry/ */
+
+.masonry {
+  transition: all .5s ease-in-out;
+  column-fill: balance;
+  column-gap: 2.5rem;
+}
+
+.masonry .item {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 0 1.5rem;
+}
+
+.masonry {
+  column-count: 1;
+}
+
+.fancybox-slide--iframe .fancybox-content {
+  max-height: 40px !important;
+}
+
+@screen sm {
+  .masonry:not(.column-2) {
+    column-count: 2;
+  }
+  /* Move caption area to the right side */
+  .fancybox-custom-layout .fancybox-caption {
+    bottom: 0;
+    left: auto;
+    padding: 30px 20px;
+    right: 44px;
+    top: 0;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: none;
+    margin-right: 5%;
+    text-align: left;
+    @apply text-xl font-medium;
+  }
+
+  .fancybox-custom-layout .fancybox-caption__body {
+    max-height: 100%;
+  }
+
+  .fancybox-custom-layout .fancybox-caption__body .fancybox-caption__description {
+    font-size: 18px !important;
+  }
+
+  /* Adjust content area position */
+  .fancybox-custom-layout .fancybox-stage {
+    width: 40%;
+    margin-left: 5%;
+  }
+
+  /* Align buttons at the right side  */
+  .fancybox-custom-layout .fancybox-toolbar {
+    bottom: 0;
+    left: auto;
+    right: 0;
+    top: 0;
+    width: 140px;
+  }
+
+  .fancybox-custom-layout .fancybox-button--close svg {
+    height: 50%;
+    width: auto;
+    left: 10px;
+  }
+
+  .fancybox-custom-layout .fancybox-button--close {
+    @apply bg-yellow text-black;
+    width: 110px;
+    height: 60px;
+  }
+
+  .fancybox-custom-layout .fancybox-button--close:after {
+    content: 'Close';
+    position: absolute;
+    display: block;
+    font-size: 1rem;
+    top: 18px;
+    right: 25px;
+  }
+
+  /* Navigation arrows */
+  .fancybox-custom-layout .fancybox-navigation .fancybox-button {
+    background: none;
+  }
+
+  .fancybox-custom-layout .fancybox-navigation .fancybox-button:not([disabled]) {
+    color: #FFCC3F;
+  }
+
+  .fancybox-custom-layout .fancybox-navigation .fancybox-button:not([disabled]):hover {
+    color: #E3DFD9;
+  }
+
+  .fancybox-custom-layout .fancybox-navigation .fancybox-button--arrow_left {
+    transform: rotate(180deg);
+    
+  }
+
+  .fancybox-custom-layout .fancybox-navigation .fancybox-button--arrow_right {
+    right: 10px;
+  }
+
+  .fancybox-custom-layout .fancybox-navigation .fancybox-button div {
+    padding: 0;
+  }
+}
+
+@screen lg {
+  .masonry:not(.column-2) {
+    column-count: 3;
+  }
+
+  .masonry.column-2 {
+    column-count: 2;
+  }
+}

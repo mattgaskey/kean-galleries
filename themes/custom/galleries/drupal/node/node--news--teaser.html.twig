@@ -1,0 +1,25 @@
+{% set page_title = content.field_title_override|children ? content.field_title_override|children : label|children|first %}
+{% set link = {
+  url: url,
+  title: page_title
+} %}
+{% set date = content.field_date_range|children|first.start_date ? content.field_date_range|children|first.start_date['#text']|date('F j, Y') ~ ' - ' ~ content.field_date_range|children|first.end_date['#text']|date('F j, Y') : content.field_date_range|children|first['#text']|date('F j, Y') %}
+{% set date_block %}
+  {{ date }}{% if content.field_event_time|children %} | {{ content.field_event_time|children }}{% endif %}
+{% endset %}
+{% if content.field_location|children %}
+  {% include "@storybook/teaser/event.twig" with {
+    link: link,
+    date: date_block,
+    intro: content.body,
+    location: content.field_location
+  } %}
+{% else %}
+  {% include '@storybook/teaser/simple.twig' with {
+    url: link.url,
+    link: link,
+    picture: content.field_banner_media,
+    intro: content.body,
+    date: null
+  } %}
+{% endif %}

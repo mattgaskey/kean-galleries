@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Left sidebar layout.
+ *
+ * Available variables:
+ * - content: Main content for this layout.
+ * - sidebar: Sidebar content.
+ * - attributes: HTML attributes for the layout <div>.
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'layout',
+    'layout--sidebar',
+  ]
+%}
+{{ attach_library('galleries/sidebar') }}
+{% embed '@storybook/layout/sidebar.twig' with {
+  classes: classes|merge(attributes.class)|join(' '),
+} %}
+{% block left_aside %}
+{{ content.aside }}
+{% endblock %}
+{% block main %}
+{{ content.main }}
+{% endblock %}
+{% endembed %}

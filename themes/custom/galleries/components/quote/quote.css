@@ -1,0 +1,7 @@
+.quote--body {
+  @apply text-lg sm:text-2xl before:content-open-quote after:content-close-quote;
+}
+
+.quote--attribution {
+  @apply text-sm sm:text-base text-gray;
+}

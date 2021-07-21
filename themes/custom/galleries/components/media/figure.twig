@@ -1,0 +1,14 @@
+<figure class="table {{ figure_classes }}">
+  {% block media %}
+    {{ media }}
+  {% endblock %}
+
+  {% if caption or credit %}
+    <figcaption class="table-caption mt-4 text-sm max-w-4xl" style="caption-side: bottom;">
+      <div class="flex flex-col">
+        {% if caption %}<div class="{{ caption_classes }}">{{ caption }}</div>{% endif %}
+        {% if credit %}<div>{{ credit }}</div>{% endif %}
+      </div>
+    </figcaption>
+  {% endif %}
+</figure>

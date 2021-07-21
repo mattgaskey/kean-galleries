@@ -1,0 +1,27 @@
+{% set component %}
+  {% block component %}{% endblock %}
+{% endset %}
+
+{% if triangle %}
+  <div class="
+    relative max-w-max sm:pt-10
+    sm:before:content-empty before:absolute before:top-0 before:-z-10 before:h-52 before:w-52
+    {{ triangle_position == 'left'
+      ? 'before:clip-path-triangle-top-left before:left-0 sm:pl-10'
+      : 'before:clip-path-triangle-top-right before:right-0 sm:pr-10'
+    }}
+    {% if triangle_color == 'red' %}
+      before:bg-red
+    {% elseif triangle_color == 'yellow' %}
+      before:bg-yellow
+    {% elseif triangle_color == 'violet' %}
+      before:bg-blue
+    {% else %}
+      before:bg-blue
+    {% endif %}
+  ">
+    {{ component }}
+  </div>
+{% else %}
+  {{ component }}
+{% endif %}

@@ -1,0 +1,6 @@
+<picture>
+{% for source in sources %}
+  <source srcset="{{ source.srcset_path }}" {{ source.other_attributes }}>
+{% endfor %}
+{{ image }}
+</picture>

@@ -1,0 +1,9 @@
+<nav aria-label="action links">{# better name for this than "action links"? #}
+  <ul class="{{ block ? 'space-y-3' : 'space-x-6 xl:space-x-8'}} text-base">
+    {% for link in action_links %}
+      <li class={{ block ? 'block' : 'inline' }}>
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

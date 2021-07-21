@@ -1,0 +1,5 @@
+services:
+  gcse.route_subscriber:
+    class: Drupal\gcse\Routing\GcseRouteSubscriber
+    tags: 
+      - { name: event_subscriber }

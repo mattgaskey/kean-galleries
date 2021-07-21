@@ -1,0 +1,6 @@
+{{ attach_library('galleries/media-grid') }}
+<div class="container">
+  <div class="masonry {{ in_sidebar ? 'column-2' : 'column-3' }} fancybox">
+    {{ content.field_media_item|children }}
+  </div>
+</div>

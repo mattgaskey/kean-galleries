@@ -1,0 +1,47 @@
+<div data-container-query-ancestor>
+  <div data-container-query-wrapper>{# might be useful for CSS rules #}
+    {% block component %}{{ component }}{% endblock %}
+  </div>
+</div>
+
+{#
+  Don't nest these!
+
+  Works in conjunction with `container-query.js`, responsive Tailwind utility classes,
+  and a custom PostCSS plugin.
+
+  When you wrap a component in this utility, the responsive Tailwind utility classes
+  (like `sm:mt-10`) on any elements within it get altered by the JS in such a way
+  that they're "converted" to CONTAINER-query rules, with this `<div>` as the reference container.
+
+  In other words, use the responsive Tailwind utility classes as normal, but pipe the component
+  through this utility if you need the media queries to refer to a container that isn't
+  the screen (great for components that need to work both as full-width content
+  and also against a sidebar).
+
+  It's not perfect. The main flaw is that this mechanism can't counteract any
+  rules in the CSS files themselves. That's because the JS mechanism uses the 
+  `sm:` (etc) classes *present in the DOM* to make the transformation.
+  
+  For example, if there's an h2 in the component in question, a CSS rule like:
+
+  @screen sm {
+    h2 {
+      @apply text-3xl;
+    }
+  }
+
+  will still kick in when the SCREEN reaches the small breakpoint. Note that this problem
+  disappears if you abstract away the h2 component into its own Twig file that has the
+  `sm:text-3xl` class directly on the h2 tag. This is yet another good reason to use
+  in-template utility classes as much as possible, and to minimize the use of `@apply` rules.
+
+  (Once all major browsers support syntax like `p:not([data-container-query-ancestor] p)`,
+  it will be possible to mostly overcome this flaw, and it can be done programmatically with
+  PostCSS. But in browsers that don't support that syntax, such rules are ignored altogether,
+  so we really can't use it until the support is in place across the board.
+
+  If you want an element within `data-container-query` NOT to get this container-query treatment
+  (i.e., so that its responsive-classes should stay responsive to the screen instead), then
+  give it the `no-container-query` class.
+#}

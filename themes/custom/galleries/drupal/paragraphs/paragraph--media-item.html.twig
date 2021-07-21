@@ -1,0 +1,26 @@
+{% if paragraph.field_media.entity.field_media_audio_file %}
+  {% set src = host ~ file_url(paragraph.field_media.entity.field_media_audio_file.entity.uri.value) %}
+{% elseif paragraph.field_media.entity.field_media_image %}
+  {% set src = paragraph.field_media.entity.field_media_image.entity.uri.value|file_url %}
+  {% set width = paragraph.field_media.entity.field_media_image.width %}
+  {% set height = paragraph.field_media.entity.field_media_image.height %}
+{% elseif paragraph.field_media.entity.field_media_oembed_video %}
+  {% set src = paragraph.field_media.entity.field_media_oembed_video.value ~ '&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0' %}
+{% endif %}
+<figure class="item">
+  {% if paragraph.field_media.entity.field_media_audio_file %}
+    <a data-fancybox="media" data-type="iframe" href="javascript:;" data-src="{{ src }}" data-caption="{{ content.field_details|children|first['#text'] ~ '<br/> <div class="fancybox-caption__description">' ~ content.field_description|children|first['#text'] ~ '</div>' }}">
+      {% include "@storybook/media/figure.twig" with { media: content.field_media } %}
+    </a>
+  {% else %}
+    <a data-fancybox="media" href="{{ src }}" data-width="{{ width }}" data-height="{{ height }}" data-caption="{{ content.field_details|children|first['#text'] ~ '<br/> <div class="fancybox-caption__description">' ~ content.field_description|children|first['#text'] ~ '</div>' }}">
+      {% include "@storybook/media/figure.twig" with { media: content.field_media } %}
+    </a>
+  {% endif %}
+  
+  {% if content.field_caption|children %}
+    <figcaption>
+      <div class="text-base text-gray mt-3">{{ content.field_caption }}</div>
+    </figcaption>
+  {% endif %}
+</figure>

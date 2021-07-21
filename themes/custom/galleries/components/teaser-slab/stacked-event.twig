@@ -1,0 +1,20 @@
+{% set tag = headline ? 'section' : 'div' %}
+<{{ tag }} class="{{ gray ? 'bg-gray-light py-10 sm:py-16' }}">
+  <div class="container">
+    <div class="small-container">
+      <div class="flex flex-col space-y-6 sm:space-y-7">
+        {% if headline %}
+          {% include '../h/h.twig' with { level: '2', headline: headline } only %}
+        {% endif %}
+
+        {% if intro %}
+          <p class="text-xl">{{ intro }}</p>
+        {% endif %}
+        
+        {{ teaser_collection }}
+
+        {% if link_list %}{{ link_list }}{% endif %}
+      </div>
+    </div>
+  </div>
+</{{ tag }}>

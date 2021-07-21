@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Theme override to display a media item.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ */
+#}
+{{ attach_library('galleries/popup') }}
+{% set video_url = media.field_media_oembed_video.value %}
+{% include '@storybook/media/video.twig' with {
+  picture: content,
+  title: name,
+  url: video_url
+} %}

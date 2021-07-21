@@ -1,0 +1,10 @@
+.content-icon {
+  height: 32px;
+  width: auto;
+  display: inline-block;
+}
+
+.content-icon svg {
+  height: 100%;
+  width: 100%;
+}

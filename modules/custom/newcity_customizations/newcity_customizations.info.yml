@@ -1,0 +1,8 @@
+name: 'Newcity Customizations'
+type: module
+description: 'Admin customizations, plugins, and extensions'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Newcity'
+dependencies:
+  - components:components

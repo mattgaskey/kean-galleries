@@ -1,0 +1,47 @@
+base:
+  css:
+    base:
+      "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap": { external: true }
+      css/base/tailwind.css: {}
+      css/base/drupal.css: {}
+    theme:
+      css/base/print.css: { media: print }
+  js:
+    https://unpkg.com/micromodal/dist/micromodal.min.js: {}
+  dependencies:
+    - galleries/container-query
+
+fancybox:
+  css:
+    base:
+      https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css: {}
+  js:
+    https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js: {}
+  dependencies:
+    - core/jquery
+
+media-grid:
+  dependencies:
+    - galleries/fancybox
+    - galleries/masonry
+
+scroll-nav:
+  dependencies:
+    - core/jquery
+    - galleries/scroll
+
+dropdown-nav:
+  dependencies:
+    - core/jquery
+    - galleries/dropdown
+
+magnific:
+  js:
+    "https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js": { external: true, minified: true }
+  dependencies:
+    - core/jquery
+
+popup:
+  dependencies:
+    - galleries/magnific
+    - galleries/video
